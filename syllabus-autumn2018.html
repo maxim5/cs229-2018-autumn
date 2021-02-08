@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+  <title>CS229: Machine Learning</title>
+
+  <!-- bootstrap -->
+  <!-- <link rel="stylesheet" href="./style/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <link rel="stylesheet" href="./style/bootstrap-theme.min.css">
+  <link href="./style/newstyle.css" rel="stylesheet" type="text/css">
+  <body>
+  <nav class="navbar navbar-expand-md navbar-dark">
+    <a href="http://cs229.stanford.edu/">
+    <img src="./static/seal-dark-red.png" style="height:40px; float: left; margin-left: 20px; margin-right: 20px;"></a>
+    <a class="navbar-brand" href="http://cs229.stanford.edu/">CS229</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="./index.html#announcement">Announcements</a></li>
+        <li class="nav-item"><a class="nav-link" href="./syllabus.html">Syllabus</a></li>
+        <li class="nav-item"><a class="nav-link" href="./index.html#info">Course Info</a></li>
+        <li class="nav-item"><a class="nav-link" href="./index.html#logistics">Logistics</a></li>
+        <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="https://piazza.com/class/spring2019/cs229">Piazza</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+<div class="sechighlight">
+<div class="container sec" style="margin-top: 1em">
+  <h2>Syllabus and Course Schedule</h2>
+  <p>
+  <b>Time and Location</b>:
+  Monday, Wednesday 4:30-5:50pm, <a href="https://campus-map.stanford.edu/?srch=bishop%20auditorium">Bishop Auditorium</a><br />
+  <strong>Class Videos</strong>:
+    Current quarter's class videos are available <a href="http://scpd.stanford.edu">here</a> for SCPD students and <a href="https://mvideox.stanford.edu/">here</a> for non-SCPD students.</p>
+<br>
+</div>
+</div>
+
+
+<div class="container">
+<table id="schedule" class="table table-bordered no-more-tables">
+  <thead class="active" style="background-color:#f9f9f9">
+    <th>Event</th><th>Date</th><th>Description</th><th>Materials and Assignments</th>
+  </thead>
+
+  <tbody>
+  <!--<tr>
+    <td colspan="4" style="text-align:center; vertical-align:middle;background-color:#fffde7">
+      <strong>Introduction</strong> (1 class)
+    </td>
+  </tr>-->
+  <tr>
+    <td>Lecture&nbsp;1</td>
+    <td> 9/24 </td>
+    <td>
+      Introduction and Basic Concepts
+    </td>
+    <td>
+    </td>
+  </tr>
+  <tr style="text-align:center; vertical-align:middle;background-color:#FFF2F2">
+    <td>A0</td>
+    <td>9/24</td>
+    <td colspan="3" style="text-align:center; vertical-align:middle;">
+      <strong>Problem Set 0</strong> <a href="materials/ps0.pdf">[pdf]</a>. Out 9/24. Due 10/3. <a href="gradescope.html">Submission instructions</a>.
+    </td>
+  </tr>
+  <!--<tr>
+    <td colspan="4" style="text-align:center; vertical-align:middle;background-color:#fffde7">
+      <strong>Supervised learning</strong> (6 classes)
+    </td>
+  </tr>-->
+  <tr>
+    <td>Lecture&nbsp;2</td>
+    <td>9/26</td>
+    <td>Supervised Learning Setup. Linear Regression.
+    </td>
+    <td>
+      <strong>Class Notes</strong>
+      <ul>
+      <li>Supervised Learning, Discriminative Algorithms [<a href="http://cs229.stanford.edu/notes/cs229-notes1.ps">ps</a>] [<a href="http://cs229.stanford.edu/notes/cs229-notes1.pdf">pdf</a>] </li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Section</td>
+    <td>9/28</td>
+    <td colspan="2">
+      <strong>Discussion Section</strong>: Linear Algebra [<a href="http://cs229.stanford.edu/section/cs229-linalg.pdf">Notes</a>]<br>
+    </td>
+  </tr>
+  <tr>
+    <td>Lecture&nbsp;3</td>
+    <td>10/1</td>
+    <td rowspan="2">
+      Weighted Least Squares. Logistic Regression. Netwon's Method <br>
+      Perceptron. Exponential Family. Generalized Linear Models.
+    </td>
+    <td rowspan="2">
+        <strong>Class Notes</strong>
+        <ul>
+        <li>Generative Algorithms [<a href="http://cs229.stanford.edu/notes/cs229-notes2.ps">ps</a>] [<a href="http://cs229.stanford.edu/notes/cs229-notes2.pdf">pdf</a>] </li>
+        </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Lecture&nbsp;4</td>
+    <td>10/3</td>
+  </tr>
+  <tr style="text-align:center; vertical-align:middle;background-color:#FFF2F2">
+    <td>A1</td>
+    <td>10/3</td>
+    <td colspan="3" style="text-align:center; vertical-align:middle;">
+      <strong>Problem Set 1</strong> <a href="https://piazza.com/class/jkbylqx4kcp1h3?cid=151">[zip]</a>. Out 10/3. Due 10/17. <a href="https://piazza.com/class/jkbylqx4kcp1h3?cid=151">Submission instructions</a>.<br>
+    </td>
+  </tr>
+  <tr>
+    <td>Section</td>
+    <td>10/5</td>
+    <td colspan="2">
+      <strong>Discussion Section</strong>: Probability[<a href="http://cs229.stanford.edu/section/cs229-prob.pdf">Notes</a>][<a href="http://cs229.stanford.edu/section/cs229-prob-slide.pdf">Slides</a>]
+    </td>
+  </tr>
+  <tr>
+    <td>Lecture&nbsp;5</td>
+    <td>10/8</td>
+    <td>
+      Gaussian Discriminant Analysis. Naive Bayes.
+    </td>
+    <td>
+    </td>
+  </tr>
+  <tr>
+    <td>Lecture&nbsp;6</td>
+    <td>10/10</td>
+    <td>
+      Laplace Smoothing. Support Vector Machines. <br>
+    </td>
+    <td>
+      <strong>Class Notes</strong>
+      <ul>
+      <li>Support Vector Machines [<a href="http://cs229.stanford.edu/notes/cs229-notes3.ps">ps</a>] [<a href="http://cs229.stanford.edu/notes/cs229-notes3.pdf">pdf</a>] </li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Section</td>
+    <td>10/12</td>
+    <td colspan="2">
+      <strong>Discussion Section</strong>: Python <a href="https://d1b10bmlvqabco.cloudfront.net/attach/jkbylqx4kcp1h3/jm8g1m67da14eq/jn7zkozyyol7/CS229_Python_Tutorial.pdf">[slides]<a> <!--Vectorization[<a href="http://cs229.stanford.edu/section/vec_demo/Vectorization_Section.pdf">Slides</a>][<a href="http://cs229.stanford.edu/section/vec_demo/knn.py">kNN</a>][<a href="http://cs229.stanford.edu/section/vec_demo/lr.ipynb">Logistic Regression</a>][<a href="http://cs229.stanford.edu/section/vec_demo/sr.ipynb">Softmax Regression</a>][<a href="http://cs229.stanford.edu/section/vec_demo/images.csv">images</a>][<a href="http://cs229.stanford.edu/section/vec_demo/labels.csv">labels</a>]-->
+    </td>
+  </tr>
+  <tr>
+    <td>Lecture&nbsp;7</td>
+    <td>10/15</td>
+    <td>
+      Support Vector Machines. Kernels.
+    </td>
+    <td>     </td>
+  </tr>
+<!--   <tr>
+    <td>Lecture&nbsp;2</td>
+    <td> 9/27 </td>
+    <td rowspan="6">
+      <strong>Supervised learning</strong> (5 classes)
+                 <ol>
+                  <li>Supervised learning setup.  LMS.</li>
+                  <li>Logistic regression.  Perceptron.  Exponential family.  </li>
+                  <li>Generative learning algorithms. Gaussian discriminant analysis.  Naive Bayes. </li>
+                  <li>Support vector machines.  </li>
+                  <li>Model selection and feature selection. </li>
+                  <li>Evaluating and debugging learning algorithms. </li>
+                </ol>
+            </td>
+    <td rowspan="6">
+      <strong>Class Notes</strong>
+      <ul>
+      <li>Generative Algorithms [<a href="http://cs229.stanford.edu/notes/cs229-notes2.ps">ps</a>] [<a href="http://cs229.stanford.edu/notes/cs229-notes2.pdf">pdf</a>] </li>
+      <li>Support Vector Machines [<a href="http://cs229.stanford.edu/notes/cs229-notes3.ps">ps</a>] [<a href="http://cs229.stanford.edu/notes/cs229-notes3.pdf">pdf</a>] </li>
+      </ul>
+
+      <strong>Problem Set 1</strong> <a href="ps/ps1/ps1.pdf">[pdf]</a>. Out 10/4. Due 10/18. <a href="gradescope.html">Submission instructions</a>.<br>
+      <strong>Discussion Section: Probability</strong> [<a href="http://cs229.stanford.edu/section/cs229-prob.pdf">Notes</a>][<a href="http://cs229.stanford.edu/section/cs229-prob-slide.pdf">Slides</a>]<br>
+      <strong>Discussion Section: Vectorization</strong> [<a href="http://cs229.stanford.edu/section/vec_demo/Vectorization_Section.pdf">Slides</a>][<a href="http://cs229.stanford.edu/section/vec_demo/knn.py">kNN</a>][<a href="http://cs229.stanford.edu/section/vec_demo/lr.ipynb">Logistic Regression</a>][<a href="http://cs229.stanford.edu/section/vec_demo/sr.ipynb">Softmax Regression</a>]<br>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Section
+    </td>
+    <td> 9/29 </td>
+  </tr>
+  <tr>
+    <td>Lecture&nbsp;3</td>
+    <td> 10/2 </td>
+  </tr>
+
+  <tr>
+    <td>Lecture&nbsp;4</td>
+    <td> 10/4 </td>
+  </tr>
+
+  <tr>
+    <td>Lecture&nbsp;5</td>
+    <td> 10/9 </td>
+  </tr>
+
+  <tr>
+    <td>Lecture&nbsp;6</td>
+    <td> 10/11 </td>
+
+  </tr> -->
+  <!--<tr>
+    <td colspan="4" style="text-align:center; vertical-align:middle;background-color:#fffde7">
+      <strong>Learning theory </strong> (2 classes)
+    </td>
+  </tr>-->
+  <tr>
+    <td>Lecture&nbsp;8</td>
+    <td> 10/17 </td>
+    <td>
+      Bias-Variance tradeoff. Regularization and model/feature selection.
+    </td>
+    <td>
+    <strong>Class Notes</strong>
+    <ul>
+      <li>Bias/variance tradeoff and error analysis[<a href="http://cs229.stanford.edu/section/error-analysis.pdf">pdf</a>]</li>
+      <!--<li>Learning Theory [<a href="http://cs229.stanford.edu/notes/cs229-notes4.ps">ps</a>] [<a href="http://cs229.stanford.edu/notes/cs229-notes4.pdf">pdf</a>]</li>-->
+      <li>Regularization and Model Selection [<a href="http://cs229.stanford.edu/notes/cs229-notes5.ps">ps</a>] [<a href="http://cs229.stanford.edu/notes/cs229-notes5.pdf">pdf</a>] </li>
+      <li>Advice on applying machine learning[<a href="http://cs229.stanford.edu/materials/ML-advice.pdf">pdf</a>]</li>
+    </ul>
+  </td>
+  </tr>
+
+  <tr style="text-align:center; vertical-align:middle;background-color:#FFF2F2">
+    <td>A2</td>
+    <td>10/17</td>
+    <td colspan="3" style="text-align:center; vertical-align:middle;">
+      <strong>Problem Set 2</strong> <a href="https://piazza.com/class/jkbylqx4kcp1h3?cid=424">[zip]</a>. Out 10/17. Due 10/31. <a href="gradescope.html">Submission instructions</a>.<br>
+    </td>
+  </tr>
+
+  <tr>
+    <td>Section</td>
+    <td>10/19</td>
+    <td colspan="2">
+      <strong>Discussion Section</strong>: Learning Theory [<a href="http://cs229.stanford.edu/notes/cs229-notes4.ps">ps</a>] [<a href="http://cs229.stanford.edu/notes/cs229-notes4.pdf">pdf</a>]
+      <!--<ul>
+      <li>Convex Optimization Overview, Part I [<a href="http://cs229.stanford.edu/section/cs229-cvxopt.ps">ps</a>] [<a href="http://cs229.stanford.edu/section/cs229-cvxopt.pdf">pdf</a>]</li>
+      <li>Convex Optimization Overview, Part II [<a href="http://cs229.stanford.edu/section/cs229-cvxopt2.ps">ps</a>] [<a href="http://cs229.stanford.edu/section/cs229-cvxopt2.pdf">pdf</a>] </li>
+    </ul>-->
+    </td>
+  </tr>
+  <tr style="text-align:center; vertical-align:middle;background-color:#FFF2F2">
+    <td>Project</td>
+    <td> 10/19 </td>
+     <td colspan="2" style="text-align:center; vertical-align:middle;">Project proposal due at <strong>11:59pm</strong>.</td>
+  </tr>
+
+  <tr>
+    <td>Lecture&nbsp;9</td>
+    <td> 10/22 </td>
+    <td>
+      Tree Ensembles.
+    </td>
+    <td>
+      <strong>Class Notes</strong>
+      <ul>
+        <li>Decision trees [<a href="http://cs229.stanford.edu/notes/cs229-notes-dt.pdf">pdf</a>]</li>
+        <li>Ensembling methods [<a href="http://cs229.stanford.edu/notes/cs229-notes-ensemble.pdf">pdf</a>]</li>
+      </ul>
+      <!--<strong>Related material</strong>
+      <ul>
+      <li>ESL 8.7 (Bagging), ESL 9.2 (Decision Trees),  ESL 15 (Random Forest) [<a href="https://web.stanford.edu/~hastie/Papers/ESLII.pdf">pdf</a>]</li>
+    </ul>-->
+  </td>
+  </tr>
+
+  <!--<tr>
+    <td colspan="4" style="text-align:center; vertical-align:middle;background-color:#fffde7">
+      <strong>Deep Learning</strong> (2 classes)
+    </td>
+  </tr>-->
+  <tr>
+    <td>Lecture&nbsp;10</td>
+    <td>10/24</td>
+    <td>
+        Neural Networks: Basics<br>
+    </td>
+    <td>
+    <strong>Class Notes</strong>
+    <ul>
+      <li>Online Learning and the Perceptron Algorithm. (optional reading) [<a href="http://cs229.stanford.edu/notes/cs229-notes6.ps">ps</a>] [<a href="http://cs229.stanford.edu/notes/cs229-notes6.pdf">pdf</a>] </li>
+      <li>Deep learning [<a href="http://cs229.stanford.edu/notes/cs229-notes-deep_learning.pdf">pdf</a>] </li>
+      <li>Backpropagation [<a href="http://cs229.stanford.edu/notes/cs229-notes-backprop.pdf">pdf</a>] </li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <td>Lecture&nbsp;11</td>
+    <td>10/29</td>
+    <td>Neural Networks: Training
+      </td>
+    <td>    </td>
+  </tr>
+  <tr>
+    <td>Section</td>
+    <td>10/26</td>
+    <td colspan="2">
+      <strong>Discussion Section</strong>: Evaluation Metrics [<a href="http://cs229.stanford.edu/section/evaluation_metrics.pdf">Slides</a>]
+    </td>
+  </tr>
+  <!--<tr>
+    <td colspan="4" style="text-align:center; vertical-align:middle;background-color:#fffde7">
+      <strong>Unsupervised learning</strong> (5 classes)
+    </td>
+  </tr>-->
+  <tr>
+    <td>Lecture&nbsp;12 </td>
+    <td>10/31</td>
+    <td>Practical Advice for ML projects
+    </td>
+    <td rowspan="5">
+      <strong>Class Notes</strong>
+      <ul>
+      <li>Unsupervised Learning, k-means clustering. [<a href="http://cs229.stanford.edu/notes/cs229-notes7a.ps">ps</a>] [<a href="http://cs229.stanford.edu/notes/cs229-notes7a.pdf">pdf</a>]</li>
+      <li>Mixture of Gaussians [<a href="http://cs229.stanford.edu/notes/cs229-notes7b.ps">ps</a>] [<a href="http://cs229.stanford.edu/notes/cs229-notes7b.pdf">pdf</a>] </li>
+      <li>The EM Algorithm [<a href="http://cs229.stanford.edu/notes/cs229-notes8.ps">ps</a>] [<a href="http://cs229.stanford.edu/notes/cs229-notes8.pdf">pdf</a>] </li>
+      <li>Factor Analysis [<a href="http://cs229.stanford.edu/notes/cs229-notes9.ps">ps</a>] [<a href="http://cs229.stanford.edu/notes/cs229-notes9.pdf">pdf</a>]</li>
+      <li>Principal Components Analysis [<a href="http://cs229.stanford.edu/notes/cs229-notes10.ps">ps</a>] [<a href="http://cs229.stanford.edu/notes/cs229-notes10.pdf">pdf</a>] </li>
+      <li>Independent Components Analysis [<a href="http://cs229.stanford.edu/notes/cs229-notes11.ps">ps</a>] [<a href="http://cs229.stanford.edu/notes/cs229-notes11.pdf">pdf</a>] </li>
+    </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <td>Lecture&nbsp;13</td>
+    <td>11/5</td>
+    <td>K-means. Mixture of Gaussians. Expectation Maximization.</td>
+    <!-- <td>    </td> -->
+  </tr>
+
+  <tr>
+    <td>Lecture&nbsp;14</td>
+    <td> 11/7 </td>
+    <td>Factor Analysis.</td>
+    <!-- <td></td> -->
+  </tr>
+  <tr>
+    <td>Lecture&nbsp;15</td>
+    <td> 11/12 </td>
+    <td>Principal Component Analysis. Independent Component Analysis.</td>
+    <!-- <td></td> -->
+  </tr>
+
+  <tr>
+    <td>Lecture&nbsp;16</td>
+    <td> 11/14</td>
+    <td>MDPs. Bellman Equations.</td>
+    <!-- <td></td> -->
+  </tr>
+
+  <tr>
+    <td>Section</td>
+    <td>11/2</td>
+    <td colspan="2">
+      <strong>Discussion Section</strong>: Midterm Review [<a href="materials/cs229-mt-review.pdf">pdf</a>]
+    </td>
+  </tr>
+
+
+  <tr style="text-align:center; vertical-align:middle;background-color:#FFF2F2">
+    <td>A3</td>
+    <td>10/31</td>
+    <td colspan="3" style="text-align:center; vertical-align:middle;">
+      <strong>Problem Set 3</strong> <a href="https://piazza.com/class/jkbylqx4kcp1h3?cid=735">[zip]</a>. Out 10/31. Due 11/14. <a href="gradescope.html">Submission instructions</a>.<br>
+    </td>
+  </tr>
+
+  <tr style="text-align:center; vertical-align:middle;background-color:#FFF2F2">
+    <td>Midterm</td>
+    <td>11/7</td>
+    <td colspan="2">
+      <span style="text-align: left;">We will have a take-home midterm. All details are posted <a href="https://piazza.com/class/jkbylqx4kcp1h3?cid=24">on Piazza</a>.</span>
+    </td>
+  </tr>
+
+  <tr>
+    <td>Section</td>
+    <td>11/16</td>
+    <td colspan="2">
+      <strong>Discussion Section</strong>: canceled
+    </td>
+  </tr>
+
+  <tr style="text-align:center; vertical-align:middle;background-color:#FFF2F2">
+    <td>Project</td>
+    <td> 11/16 </td>
+     <td colspan="2">Project milestones due 11/16 at <strong>11:59pm</strong>.</td>
+  </tr>
+
+  <!--<tr>
+    <td colspan="4" style="text-align:center; vertical-align:middle;background-color:#fffde7">
+      <strong>Reinforcement learning and control</strong> (4 classes)
+    </td>
+  </tr>-->
+  <tr>
+    <td>Lecture&nbsp;17 </td>
+    <td> 11/26 </td>
+    <td> Value Iteration and Policy Iteration. LQR. LQG. </td>
+    <td rowspan="4">
+     <strong>Class Notes</strong>
+     <ul>
+      <li>Reinforcement Learning and Control [<a href="http://cs229.stanford.edu/notes/cs229-notes12.ps">ps</a>] [<a href="http://cs229.stanford.edu/notes/cs229-notes12.pdf">pdf</a>]</li>
+      <li>LQR, DDP and LQG [<a href="http://cs229.stanford.edu/notes/cs229-notes13.pdf">pdf</a>]</li>
+    </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <td>Lecture&nbsp;18</td>
+    <td> 11/28 </td>
+    <td>Q-Learning. Value function approximation.</td>
+    <!-- <td>    </td> -->
+  </tr>
+
+  <tr>
+    <td>Lecture&nbsp;19</td>
+    <td> 12/3 </td>
+    <td>Policy Search. REINFORCE. POMDPs.</td>
+    <!-- <td></td> -->
+  </tr>
+
+  <tr>
+    <td>Lecture&nbsp;20</td>
+    <td> 12/5 </td>
+    <td>Optional topic. Wrap-up.</td>
+    <!-- <td></td> -->
+  </tr>
+
+  <tr style="text-align:center; vertical-align:middle;background-color:#FFF2F2">
+    <td>A4</td>
+    <td>11/14</td>
+    <td colspan="3" style="text-align:center; vertical-align:middle;">
+      <strong>Problem Set 4</strong> <a href="https://piazza.com/class/jkbylqx4kcp1h3?cid=1627">[zip]</a>. Out 11/14. Due 12/5. <a href="gradescope.html">Submission instructions</a>.<br>
+    </td>
+  </tr>
+
+  <tr>
+    <td>Section</td>
+    <td>11/30</td>
+    <td colspan="2">
+      <strong>Discussion Section</strong>: On critiques of Machine Learning [<a href="materials/critiques-ml.pdf">slides</a>]
+    </td>
+  </tr>
+
+  <tr>
+    <td>Section</td>
+    <td>12/07</td>
+    <td colspan="2">
+      <strong>Discussion Section</strong>: Convolutional Neural Networks
+    </td>
+  </tr>
+
+  <tr style="text-align:center; vertical-align:middle;background-color:#FFF2F2">
+    <td>Project</td>
+    <td>12/10</td>
+    <td colspan="2" style="text-align:center; vertical-align:middle;">
+      <strong>Project poster PDF</strong> and project recording (some teams) due at 11:59 pm <a href="gradescope.html">Submission instructions</a>.<br>
+    </td>
+  </tr>
+  <tr style="text-align:center; vertical-align:middle;background-color:#FFF2F2">
+    <td>Project</td>
+    <td> 12/11 </td>
+     <td colspan="2"> Poster presentations from 8:30-11:30am.  Venue and details to be announced.</td>
+  </tr>
+
+  <tr style="text-align:center; vertical-align:middle;background-color:#FFF2F2">
+    <td>Project</td>
+    <td> 12/13 </td>
+     <td colspan="2">Final writeup due at <strong>11:59pm</strong> (no late days).</td>
+  </tr>
+
+  <tr class="warning" id="opt">
+    <td colspan="4">
+    <b>Supplementary Notes</b>
+    <ol>
+      <li>Binary classification with +/-1 labels [<a href="http://cs229.stanford.edu/extra-notes/loss-functions.pdf">pdf</a>]</li>
+      <li>Boosting algorithms and weak learning [<a href="http://cs229.stanford.edu/extra-notes/boosting.pdf">pdf</a>] </li>
+      <li>Functional after implementing stump_booster.m in PS2. [<a href="http://cs229.stanford.edu/extra-notes/boosting_example.m">here</a>] </li>
+      <li>The representer theorem [<a href="http://cs229.stanford.edu/extra-notes/representer-function.pdf">pdf</a>]</li>
+      <li>Hoeffding's inequality [<a href="http://cs229.stanford.edu/extra-notes/hoeffding.pdf">pdf</a>] </li>
+    </ol></td>
+  </tr>
+
+  <tr class="alert">
+    <td colspan="4">
+    <b>Section Notes</b>
+    <ol>
+      <li id="la">Linear Algebra Review and Reference [<a href="http://cs229.stanford.edu/section/cs229-linalg.pdf">pdf</a>]</li>
+      <li>Probability Theory Review [<a href="http://cs229.stanford.edu/section/cs229-prob.pdf">pdf</a>] </li>
+      <!--<li>Files for the Matlab tutorial:  [<a href="http://cs229.stanford.edu/materials/MATLAB_Session.pdf">pdf</a>] [<a href="http://cs229.stanford.edu/section/matlab/sigmoid.m">sigmoid.m</a>] [<a href="http://cs229.stanford.edu/section/matlab/logistic_grad_ascent.m">logistic_grad_ascent.m</a>] [<a href="http://cs229.stanford.edu/materials/matlab_session.m">matlab_session.m</a>] </li>-->
+      <li>Convex Optimization Overview, Part I [<a href="http://cs229.stanford.edu/section/cs229-cvxopt.ps">ps</a>] [<a href="http://cs229.stanford.edu/section/cs229-cvxopt.pdf">pdf</a>]</li>
+      <li>Convex Optimization Overview, Part II [<a href="http://cs229.stanford.edu/section/cs229-cvxopt2.ps">ps</a>] [<a href="http://cs229.stanford.edu/section/cs229-cvxopt2.pdf">pdf</a>] </li>
+      <li>Hidden Markov Models [<a href="http://cs229.stanford.edu/section/cs229-hmm.ps">ps</a>] [<a href="http://cs229.stanford.edu/section/cs229-hmm.pdf">pdf</a>] </li>
+      <li>The Multivariate Gaussian Distribution [<a href="http://cs229.stanford.edu/section/gaussians.pdf">pdf</a>] </li>
+      <li>More on Gaussian Distribution [<a href="http://cs229.stanford.edu/section/more_on_gaussians.pdf">pdf</a>] </li>
+      <li>Gaussian Processes [<a href="http://cs229.stanford.edu/section/cs229-gaussian_processes.pdf">pdf</a>] </li>
+    </ol></td>
+  </tr>
+  <tr>
+    <td colspan="4">
+      <b>Other Resources</b>
+      <ol>
+        <li>Advice on applying machine learning: Slides from Andrew's lecture on getting machine learning algorithms to work in practice can be found <a href="http://cs229.stanford.edu/materials/ML-advice.pdf">here</a>.<br></li>
+        <li>Previous projects: A list of last year's final projects can be found <a href="http://cs229.stanford.edu/proj2017/index.html">here</a>.<br></li>
+        <!--<li>Matlab resources: Here are a couple of Matlab tutorials that you might find helpful: <a href="http://www.math.ucsd.edu/~bdriver/21d-s99/matlab-primer.html">http://www.math.ucsd.edu/~bdriver/21d-s99/matlab-primer.html</a> and <a href="http://www.math.mtu.edu/~msgocken/intro/node1.html">http://www.math.mtu.edu/~msgocken/intro/node1.html</a>. For emacs users only: If you plan to run Matlab in emacs, here are <a href="http://cs229.stanford.edu/materials/matlab.el">matlab.el</a>, and a helpful <a href="http://cs229.stanford.edu/materials/emacs">.emac's</a> file.<br></li>
+        <li>Octave resources: For a free alternative to Matlab, check out <a href="http://www.gnu.org/software/octave/">GNU Octave</a>. The official documentation is available <a href="http://www.gnu.org/software/octave/doc/interpreter/">here</a>. Some useful tutorials on Octave include <a href="http://en.wikibooks.org/wiki/Octave_Programming_Tutorial">http://en.wikibooks.org/wiki/Octave_Programming_Tutorial</a> and <a href="http://www-mdp.eng.cam.ac.uk/web/CD/engapps/octave/octavetut.pdf">http://www-mdp.eng.cam.ac.uk/web/CD/engapps/octave/octavetut.pdf</a> .<br></li>-->
+        <li>Data: Here is the <a href="http://www.ics.uci.edu/~mlearn/MLRepository.html">UCI Machine learning repository</a>, which contains a large collection of standard datasets for testing learning algorithms. If you want to see examples of recent work in machine learning, start by taking a look at the conferences <a href="http://www.nips.cc/">NIPS</a>(all old NIPS papers are online) and ICML. Some other related conferences include UAI, AAAI, IJCAI.<br></li>
+        <li>Viewing PostScript and PDF files: Depending on the computer you are using, you may be able to download a <a href="http://www.cs.wisc.edu/~ghost/">PostScript</a> viewer or <a href="http://www.adobe.com/products/acrobat/readstep2_allversions.html">PDF viewer</a> for it if you don't already have one.<br></li>
+        <li><a href="https://stanford.edu/~shervine/teaching/cs-229/cheatsheet-supervised-learning">Machine learning study guides tailored to CS 229</a> by Afshine Amidi and Shervine Amidi.</li>
+      </ol>
+    </td>
+  </tr>
+
+</tbody></table>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+</body></html>
