@@ -17,12 +17,14 @@ def main(train_path, eval_path, pred_path):
 
     # *** START CODE HERE ***
     model = LogisticRegression()
-    model.fit(x_train, y_train)
+    theta = model.fit(x_train, y_train)
 
     x_test, y_test = util.load_dataset(eval_path, add_intercept=True)
     fcsts = model.predict(x_test)
     # print(np.sum((fcsts - y_test)**2))
     model.write(fcsts, pred_path)
+    fig_path_prefix = pred_path.split(".")[0]
+    util.plot(x_train, y_train, theta, save_path=f"{fig_path_prefix}_fig", correction=1.0)
     # *** END CODE HERE ***
 
 
@@ -54,6 +56,8 @@ class LogisticRegression(LinearModel):
             h_inv = np.linalg.inv(hess)
             self.theta = self.theta - h_inv @ grad
             i += 1
+
+        return self.theta
         # *** END CODE HERE ***
 
     def predict(self, x):
