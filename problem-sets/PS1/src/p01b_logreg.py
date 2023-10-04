@@ -20,11 +20,11 @@ def main(train_path, eval_path, pred_path):
     theta = model.fit(x_train, y_train)
 
     x_test, y_test = util.load_dataset(eval_path, add_intercept=True)
-    fcsts = model.predict(x_test)
-    # print(np.sum((fcsts - y_test)**2))
+    fcsts, _ = model.predict(x_test)
+
     model.write(fcsts, pred_path)
     fig_path_prefix = pred_path.split(".")[0]
-    util.plot(x_train, y_train, theta, save_path=f"{fig_path_prefix}_fig", correction=1.0)
+    util.plot(x_train, y_train, theta, save_path=f"{fig_path_prefix}_fig")
     # *** END CODE HERE ***
 
 
@@ -72,7 +72,7 @@ class LogisticRegression(LinearModel):
         # *** START CODE HERE ***
         S = self.sigmoid(self.theta, x)
         fcsts = (S >= 0.5) * 1
-        return fcsts
+        return fcsts, S
         # *** END CODE HERE ***
 
     def sigmoid(self, theta, X):
