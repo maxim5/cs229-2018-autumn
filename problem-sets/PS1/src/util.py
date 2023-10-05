@@ -92,8 +92,17 @@ def plot(x, y, theta, save_path=None, correction=0.0):
     if save_path is not None:
         plt.savefig(save_path)
 
+def plot_regression(x, y, label_x="x", label_y="y", save_path=""):
+    plt.figure()
+    plt.scatter(x, y)
+    # Add labels and save to disk
+    plt.xlabel(label_x)
+    plt.ylabel(label_y)
+    if save_path is not None:
+        plt.savefig(save_path)
 
-def evaluate(fcst, y_test, heading=""):
+
+def evaluate_classification(fcst, y_test, heading=""):
     print(f"\n\n{heading}")
     # evaluate
     y_test_vec = y_test.reshape(len(y_test), 1)
@@ -126,6 +135,15 @@ def evaluate(fcst, y_test, heading=""):
           f"precision: {np.round(precision, 2)}, "
           f"recall: {np.round(recall, 2)}")
 
+
+def evaluate_regression(y, y_hat, heading=""):
+    print(f"\n\n{heading}")
+    m = len(y)
+    # evaluate
+    y_vec = y.reshape(m, 1)
+    y_hat_vec = y_hat.reshape(m, 1)
+    mse = (1/m) * np.sum((y_hat_vec - y_vec)**2)
+    print(f"MSE = {np.round(mse, 2)}")
 
 def write(data, path):
     dir_name = os.path.dirname(path)

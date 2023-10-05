@@ -39,7 +39,7 @@ def main(train_path, valid_path, test_path, pred_path):
     logreg_model = LogisticRegression()
     theta = logreg_model.fit(x_train, t_train)
     t_fcsts_c, _ = logreg_model.predict(x_test)
-    util.evaluate(t_fcsts_c, t_test, "PS1 p02 (c)")
+    util.evaluate_classification(t_fcsts_c, t_test, "PS1 p02 (c)")
     util.write(t_fcsts_c, pred_path_c)
 
     fig_path_prefix = pred_path_c.split(".")[0]
@@ -50,7 +50,7 @@ def main(train_path, valid_path, test_path, pred_path):
     logreg_model = LogisticRegression()
     theta = logreg_model.fit(x_train, y_train)
     t_fcsts_d, _ = logreg_model.predict(x_test)
-    util.evaluate(t_fcsts_d, t_test, "PS1 p02 (d)")
+    util.evaluate_classification(t_fcsts_d, t_test, "PS1 p02 (d)")
     util.write(t_fcsts_d, pred_path_d)
 
     fig_path_prefix = pred_path_d.split(".")[0]
@@ -66,7 +66,7 @@ def main(train_path, valid_path, test_path, pred_path):
     _, raw_probs = logreg_model.predict(x_test)
     adjusted_probs = raw_probs/a
     fcsts = adjusted_probs >= 0.5
-    util.evaluate(fcsts, t_test, "PS1 p02 (e)")
+    util.evaluate_classification(fcsts, t_test, "PS1 p02 (e)")
     util.write(fcsts, pred_path_e)
 
     fig_path_prefix = pred_path_e.split(".")[0]
