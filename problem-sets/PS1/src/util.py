@@ -101,6 +101,16 @@ def plot_regression(x, y, label_x="x", label_y="y", save_path=""):
     if save_path is not None:
         plt.savefig(save_path)
 
+def plot_regression_train_and_fcst(x_train, y_train, x_test, y_test, label_x="x", label_y="y", save_path=""):
+    plt.figure()
+    plt.plot(x_train, y_train, 'bx', linewidth=2)
+    plt.plot(x_test, y_test, 'ro', linewidth=2)
+    # Add labels and save to disk
+    plt.xlabel(label_x)
+    plt.ylabel(label_y)
+    if save_path is not None:
+        plt.savefig(save_path)
+
 
 def evaluate_classification(fcst, y_test, heading=""):
     print(f"\n\n{heading}")
@@ -143,9 +153,14 @@ def evaluate_regression(y, y_hat, heading=""):
     y_vec = y.reshape(m, 1)
     y_hat_vec = y_hat.reshape(m, 1)
     mse = (1/m) * np.sum((y_hat_vec - y_vec)**2)
-    print(f"MSE = {np.round(mse, 2)}")
+    mse = np.round(mse, 2)
+    print(f"MSE = {mse}")
+    return mse
 
 def write(data, path):
     dir_name = os.path.dirname(path)
     os.makedirs(dir_name, exist_ok=True)
     np.savetxt(path, data, fmt="%d", delimiter=",")
+
+def get_fig_prefix(pred_path):
+    return pred_path.split(".")[0]

@@ -65,12 +65,7 @@ class PoissonRegression(LinearModel):
         y = y/self.scale_param
         m, n = x.shape
         theta = np.zeros(n)
-        i = 0
-        for i, (x_i, y_i) in enumerate(zip(x, y)):
-            if i < 10:
-                print(f"{i}. theta: {theta}, x_i.T: {x_i.T}, "
-                      f"theta @ x_i.T: {theta @ x_i.T}")
-                i += 1
+        for x_i, y_i in zip(x, y):
             theta += self.lr * (y_i - np.exp(theta @ x_i.T)) * x_i
         self.theta = theta
         # *** END CODE HERE ***
