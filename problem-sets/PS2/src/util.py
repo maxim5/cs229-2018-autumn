@@ -3,6 +3,7 @@ import csv
 import matplotlib.pyplot as plt
 import numpy as np
 import json
+import os
 
 
 def add_intercept_fn(x):
@@ -74,7 +75,7 @@ def load_spam_dataset(tsv_path):
 
     return messages, np.array(labels)
 
-def plot(x, y, theta, save_path, correction=1.0):
+def plot(x, y, theta, save_path, correction=0.0):
     """Plot dataset and fitted logistic regression parameters.
 
     Args:
@@ -91,7 +92,8 @@ def plot(x, y, theta, save_path, correction=1.0):
 
     # Plot decision boundary (found by solving for theta^T x = 0)
     x1 = np.arange(min(x[:, -2]), max(x[:, -2]), 0.01)
-    x2 = -(theta[0] / theta[2] * correction + theta[1] / theta[2] * x1)
+    x2 = correction - (theta[0] / theta[2] + theta[1] / theta[2] * x1)
+    # x2 = -(theta[0] / theta[2]*correction + theta[1] / theta[2] * x1)
     plt.plot(x1, x2, c='red', linewidth=2)
 
     # Add labels and save to disk
@@ -113,13 +115,101 @@ def plot_contour(predict_fn):
 
 def plot_points(x, y):
     """Plot some points where x are the coordinates and y is the label"""
-    x_one = x[y == 0, :]
-    x_two = x[y == 1, :]
-    
-    plt.scatter(x_one[:,0], x_one[:,1], marker='x', color='red')
-    plt.scatter(x_two[:,0], x_two[:,1], marker='o', color='blue')
+    cmap = plt.cm.jet
+    cmaplist = [cmap(i) for i in range(cmap.N)]
+    cmap = cmap.from_list('Custom cmap', cmaplist, cmap.N)
+    plt.scatter(x[:, 0], x[:, 1], c=y, cmap=cmap, alpha=0.5)
+
+
+def plot_line(x, y1, y2):
+    """Plot some points where x are the coordinates and y is the label"""
+    plt.plot(x, y1, x, y2)
+
+def plot_lines(x, ys, labels, x_label='X', y_label='Y'):
+    """Plot multiple lines where x is the coordinate and ys is a list of y values with corresponding labels"""
+    for y, label in zip(ys, labels):
+        print(f"plotting {label}")
+        plt.plot(x[:len(y)], y, label=label)
+    plt.xlabel(x_label)
+    plt.ylabel(y_label)
+    plt.legend()
+    plt.show()
 
 def write_json(filename, value):
     """Write the provided value as JSON to the given filename"""
     with open(filename, 'w') as f:
         json.dump(value, f)
+
+
+def plot_regression(x, y, label_x="x", label_y="y", save_path=""):
+    plt.figure()
+    plt.scatter(x, y)
+    # Add labels and save to disk
+    plt.xlabel(label_x)
+    plt.ylabel(label_y)
+    if save_path is not None:
+        plt.savefig(save_path)
+
+def plot_regression_train_and_fcst(x_train, y_train, x_test, y_test, label_x="x", label_y="y", save_path=""):
+    plt.figure()
+    plt.plot(x_train, y_train, 'bx', linewidth=2)
+    plt.plot(x_test, y_test, 'ro', linewidth=2)
+    # Add labels and save to disk
+    plt.xlabel(label_x)
+    plt.ylabel(label_y)
+    if save_path is not None:
+        plt.savefig(save_path)
+
+
+def evaluate_classification(fcst, y_test, heading=""):
+    print(f"\n\n{heading}")
+    # evaluate
+    y_test_vec = y_test.reshape(len(y_test), 1)
+    fcst_vec = fcst.reshape(len(fcst), 1)
+
+    correct = (y_test_vec == fcst_vec)
+    wrong = 1 - correct
+
+    accuracy = np.sum(correct) / len(fcst_vec)
+    true_pos = np.sum(correct * fcst_vec)
+    true_neg = np.sum(correct * (1 - fcst_vec))
+    false_pos = np.sum(wrong * fcst_vec)
+    false_neg = np.sum(wrong * (1 - fcst_vec))
+
+    if (true_pos + false_pos) == 0:
+        precision = 0
+    else:
+        precision = true_pos / (true_pos + false_pos)
+
+    if (true_pos + false_neg) == 0:
+        recall = 0
+    else:
+        recall = true_pos / (true_pos + false_neg)
+
+    print(f"y_test_vec, shape: {y_test_vec.shape}, num: {np.sum(y_test_vec)}")
+    print(f"fcst_vec, shape: {fcst_vec.shape}, num: {np.sum(fcst_vec)}")
+    print(f"correct vec, shape: {correct.shape}, num: {np.sum(correct)}")
+    print(f"wrong vec, shape: {wrong.shape}, num: {np.sum(wrong)}")
+    print(f"accuracy: {np.round(accuracy, 2)}, "
+          f"precision: {np.round(precision, 2)}, "
+          f"recall: {np.round(recall, 2)}")
+
+
+def evaluate_regression(y, y_hat, heading=""):
+    print(f"\n\n{heading}")
+    m = len(y)
+    # evaluate
+    y_vec = y.reshape(m, 1)
+    y_hat_vec = y_hat.reshape(m, 1)
+    mse = (1/m) * np.sum((y_hat_vec - y_vec)**2)
+    mse = np.round(mse, 2)
+    print(f"MSE = {mse}")
+    return mse
+
+def write(data, path):
+    dir_name = os.path.dirname(path)
+    os.makedirs(dir_name, exist_ok=True)
+    np.savetxt(path, data, fmt="%d", delimiter=",")
+
+def get_fig_prefix(pred_path):
+    return pred_path.split(".")[0]
