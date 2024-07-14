@@ -115,7 +115,7 @@ def run_em(x, w, phi, mu, sigma):
         p_xz = np.zeros(w.shape)
         for i in range(K):
         	p_xz[:, i] = np.exp(-0.5 * ((x-mu[i]).dot(np.linalg.inv(sigma[i])) * (x-mu[i])).sum(axis=1)) / (np.linalg.det(sigma[i])**0.5) * phi[i]
-        ll = np.sum(np.log(p_xz))
+        ll = np.sum(np.log(np.sum(p_xz, axis=1)))
         # *** END CODE HERE ***
     print(f'Number of iterations:{it}')
 
@@ -175,7 +175,7 @@ def run_semi_supervised_em(x, x_tilde, z, w, phi, mu, sigma):
         p_xz = np.zeros(w.shape)
         for i in range(K):
         	p_xz[:, i] = np.exp(-0.5 * ((x-mu[i]).dot(np.linalg.inv(sigma[i])) * (x-mu[i])).sum(axis=1)) / (np.linalg.det(sigma[i])**0.5) * phi[i]
-        ll = np.sum(np.log(p_xz))
+        ll = np.sum(np.log(np.sum(p_xz, axis=1)))
         # *** END CODE HERE ***
     print(f'Number of iterations:{it}')
 

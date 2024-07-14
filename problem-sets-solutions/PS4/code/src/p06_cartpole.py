@@ -126,10 +126,8 @@ def choose_action(state, mdp_data):
 
     # *** START CODE HERE ***
     expect_value = mdp_data['value'].dot(mdp_data['transition_probs'][state])
-    if expect_value[0] == expect_value[1]:
-        return np.random.randint(2)
-    else:
-        return np.argmax(expect_value)
+
+    return np.argmax(expect_value)
     # *** END CODE HERE ***
 
 def update_mdp_transition_counts_reward_counts(mdp_data, state, action, new_state, reward):
