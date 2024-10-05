@@ -24,4 +24,33 @@ def main(tau_values, train_path, valid_path, test_path, pred_path):
     # Run on the test set to get the MSE value
     # Save predictions to pred_path
     # Plot data
+
+    fig_path_prefix = util.get_fig_prefix(pred_path)
+    x_valid, y_valid = util.load_dataset(valid_path, add_intercept=True)
+    mse_vals = []
+
+    for tau in tau_values:
+        model = LocallyWeightedLinearRegression(tau)
+        model.fit(x_train, y_train)
+
+        # Get MSE value on the validation set
+        fcsts = model.predict(x_valid)
+        mse = util.evaluate_regression(y_valid, fcsts,
+                                   f"PS1 p05(c) tau: {tau} valid_set")
+        tau_str = str(tau).split(".")
+        tau_str = "_".join(tau_str)
+        plot_path = f"{fig_path_prefix}_tau_{tau_str}"
+        util.plot_regression_train_and_fcst(x_valid, y_valid, x_valid, fcsts,
+                                            save_path=plot_path)
+        mse_vals.append(mse)
+
+    # Plot validation predictions on top of test set
+    best_tau = tau_values[np.argmin(mse_vals)]
+    model = LocallyWeightedLinearRegression(best_tau)
+    model.fit(x_train, y_train)
+
+    x_test, y_test = util.load_dataset(test_path, add_intercept=True)
+    fcsts = model.predict(x_test)
+    mse = util.evaluate_regression(y_test, fcsts,
+                             f"PS1 p05(c) tau: {best_tau}, test_set")
     # *** END CODE HERE ***

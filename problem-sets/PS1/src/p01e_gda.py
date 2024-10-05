@@ -1,5 +1,6 @@
 import numpy as np
 import util
+import os
 
 from linear_model import LinearModel
 
@@ -16,6 +17,15 @@ def main(train_path, eval_path, pred_path):
     x_train, y_train = util.load_dataset(train_path, add_intercept=False)
 
     # *** START CODE HERE ***
+    model = GDA()
+    theta = model.fit(x_train, y_train)
+
+    x_test, y_test = util.load_dataset(eval_path, add_intercept=True)
+    fcst = model.predict(x_test)
+
+    util.write(fcst, pred_path)
+    fig_path_prefix = pred_path.split(".")[0]
+    util.plot(x_train, y_train, theta, save_path=f"{fig_path_prefix}_fig")
     # *** END CODE HERE ***
 
 
@@ -39,6 +49,31 @@ class GDA(LinearModel):
             theta: GDA model parameters.
         """
         # *** START CODE HERE ***
+        # get m and n
+        m, n = x.shape[0], x.shape[1]
+
+        # calculate phi
+        phi = np.sum(y) / m
+
+        # calculate mu0 and mu1
+        y0, y1 = y == 0, y == 1
+        num_0, num_1 = np.sum(y0), np.sum(y1)
+        y0, y1 = y0.reshape(len(y0), 1), y1.reshape(len(y1), 1)
+        mu0, mu1 = np.sum(x * y0, axis=0) / num_0, np.sum(x * y1,
+                                                          axis=0) / num_1
+
+        # calculate sigma
+        x_diff = x - (y0 * mu0) - (y1 * mu1)
+        sigma = (1 / m) * x_diff.T @ x_diff
+
+        # calculate thetas
+        sigma_inv = np.linalg.inv(sigma)
+        theta = (mu1 - mu0) @ sigma_inv
+        theta0 = (1 / 2) * (mu0 + mu1) @ sigma_inv @ (
+                    mu0 - mu1).T - np.log((1 - phi) / phi)
+
+        self.theta = np.insert(theta, 0, theta0)
+        return self.theta
         # *** END CODE HERE ***
 
     def predict(self, x):
@@ -51,4 +86,7 @@ class GDA(LinearModel):
             Outputs of shape (m,).
         """
         # *** START CODE HERE ***
+        # calculate sigmoid
+        S = 1 / (1 + np.exp(-(x @ self.theta)))
+        return S >= 0.5
         # *** END CODE HERE
