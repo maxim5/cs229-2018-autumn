@@ -15,14 +15,14 @@ def main(lr, train_path, eval_path, pred_path):
         pred_path: Path to save predictions.
     """
     # Load training set
-    x_train, y_train = util.load_dataset(train_path, add_intercept=False)
+    x_train, y_train = util.load_dataset(train_path, add_intercept=True)
 
     # *** START CODE HERE ***
     
     model = PoissonRegression(step_size=lr, eps=1e-5)
     model.fit(x_train, y_train)
 
-    x_eval, y_eval = util.load_dataset(eval_path, add_intercept=False)
+    x_eval, y_eval = util.load_dataset(eval_path, add_intercept=True)
     y_pred = model.predict(x_eval)
     np.savetxt(pred_path, y_pred)
 
