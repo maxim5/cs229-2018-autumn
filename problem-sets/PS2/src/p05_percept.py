@@ -101,7 +101,7 @@ def train_perceptron(kernel_name, kernel, learning_rate):
     for x_i, y_i in zip(train_x, train_y):
         update_state(state, kernel, learning_rate, x_i, y_i)
 
-    test_x, test_y = util.load_csv('../data/ds5_train.csv')
+    test_x, test_y = util.load_csv('../data/ds5_test.csv')
 
     plt.figure(figsize=(12, 8))
     util.plot_contour(lambda a: predict(state, kernel, a))

@@ -14,7 +14,9 @@ def main(lr, train_path, eval_path, pred_path):
         pred_path: Path to save predictions.
     """
     # Load training set
-    x_train, y_train = util.load_dataset(train_path, add_intercept=False)
+    x_train, y_train = util.load_dataset(train_path, add_intercept=True)
+    # The line below is the original one from Stanford. It does not include the intercept, but this should be added.
+    # x_train, y_train = util.load_dataset(train_path, add_intercept=False)
 
     # *** START CODE HERE ***
     # Fit a Poisson Regression model
